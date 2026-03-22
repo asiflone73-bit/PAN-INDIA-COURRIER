@@ -24,7 +24,7 @@
 
 <button type="submit">Submit Booking</button>
 
-</form>
+</form onsubmit="sendwhatsapp (event)">
 
 <script>
 function sendWhatsApp(e){
@@ -53,3 +53,23 @@ function sendWhatsApp(e){
 
 </body>
 </html>
+<script>
+function sendWhatsApp(e){
+    e.preventDefault();
+
+    var name = document.getElementById("name").value;
+    var receiver = document.getElementById("receiver").value;
+    var pickup = document.getElementById("pickup").value;
+    var phone = document.getElementById("phone").value;
+
+    var msg = "📦 New Booking:%0A"
+        + "Sender: " + name + "%0A"
+        + "Receiver: " + receiver + "%0A"
+        + "Pickup: " + pickup + "%0A"
+        + "Mobile: " + phone;
+
+    var url = "https://wa.me/917006317188?text=" + msg;
+
+    window.open(url, "_blank");
+}
+</script>
