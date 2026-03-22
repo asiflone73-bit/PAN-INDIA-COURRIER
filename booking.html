@@ -8,18 +8,46 @@
 
 <h2>Book Your Courier</h2>
 
-<input type="text" placeholder="Sender Name"><br><br>
-<input type="text" placeholder="Receiver Name"><br><br>
-<input type="text" placeholder="Address"><br><br>
-<input type="text" placeholder="Mobile Number"><br><br>
+<form onsubmit="sendWhatsApp(event)">
 
-<button onclick="book()">Submit Booking</button>
+<input type="text" id="name" placeholder="Sender Name" required><br><br>
 
-<p id="msg"></p>
+<input type="text" id="receiver" placeholder="Receiver Name" required><br><br>
+
+<input type="text" id="pickup" placeholder="Pickup Address" required><br><br>
+
+<input type="text" id="delivery" placeholder="Delivery Address" required><br><br>
+
+<input type="text" id="phone" placeholder="Mobile Number" required><br><br>
+
+<textarea id="details" placeholder="Parcel Details"></textarea><br><br>
+
+<button type="submit">Submit Booking</button>
+
+</form>
 
 <script>
-function book(){
-  document.getElementById("msg").innerHTML="✅ Booking Submitted Successfully!";
+function sendWhatsApp(e){
+    e.preventDefault();
+
+    var name = document.getElementById("name").value;
+    var receiver = document.getElementById("receiver").value;
+    var pickup = document.getElementById("pickup").value;
+    var delivery = document.getElementById("delivery").value;
+    var phone = document.getElementById("phone").value;
+    var details = document.getElementById("details").value;
+
+    var msg = "📦 New Booking:%0A"
+        + "Sender: " + name + "%0A"
+        + "Receiver: " + receiver + "%0A"
+        + "Pickup: " + pickup + "%0A"
+        + "Delivery: " + delivery + "%0A"
+        + "Mobile: " + phone + "%0A"
+        + "Details: " + details;
+
+    var url = "https://wa.me/917006317188?text=" + msg;
+
+    window.open(url, "_blank");
 }
 </script>
 
