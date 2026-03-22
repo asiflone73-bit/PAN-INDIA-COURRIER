@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Book Courier</title>
+</head>
+
+<body style="text-align:center; font-family:Arial;">
+
+<h2>Book Your Courier</h2>
+
+<input type="text" placeholder="Sender Name"><br><br>
+<input type="text" placeholder="Receiver Name"><br><br>
+<input type="text" placeholder="Address"><br><br>
+<input type="text" placeholder="Mobile Number"><br><br>
+
+<button onclick="book()">Submit Booking</button>
+
+<p id="msg"></p>
+
+<script>
+function book(){
+  document.getElementById("msg").innerHTML="✅ Booking Submitted Successfully!";
+}
+</script>
+
+</body>
+</html>
