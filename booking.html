@@ -1,3 +1,4 @@
+<script>
 function sendWhatsApp(e){
   e.preventDefault();
 
@@ -7,23 +8,18 @@ function sendWhatsApp(e){
   var delivery = document.getElementById("delivery").value;
   var phone = document.getElementById("phone").value;
 
-  var msg = "📦 New Booking:%0A"
-          + "Sender: " + name + "%0A"
-          + "Receiver: " + receiver + "%0A"
-          + "Pickup: " + pickup + "%0A"
-          + "Delivery: " + delivery + "%0A"
-          + "Mobile: " + phone;
+  var msg = "New Booking:%0A"
+  + "Sender: " + name + "%0A"
+  + "Receiver: " + receiver + "%0A"
+  + "Pickup: " + pickup + "%0A"
+  + "Delivery: " + delivery + "%0A"
+  + "Mobile: " + phone;
 
-  var url = "https://wa.me/917006317188?text=" + msg;
-
-  // 🔥 IMPORTANT FIX (image method use karenge)
-  var img = new Image();
-  img.src = "https://script.google.com/macros/s/AKfycbxwGhG1Vm8W145kyQRkym37uXoWWR_qB8TCoJmPwP6JeHTTKgGRWnfvIpqFtQjI_AS5hA/exec"
-          + "?name=" + name
-          + "&receiver=" + receiver
-          + "&pickup=" + pickup
-          + "&phone=" + phone;
+  // Google Sheet save
+  fetch("https://script.google.com/macros/s/AKfycbxgQcqm4zv1DehbNboF5I3kIXToMLV_S_bQVyduw78hPETKj8fLVnafE8V09vnpNKU8ug/exec?name=" + name + "&receiver=" + receiver + "&pickup=" + pickup + "&phone=" + phone);
 
   // WhatsApp open
+  var url = "https://wa.me/917006317188?text=" + msg;
   window.open(url, "_blank");
 }
+</script>
