@@ -1,83 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Book Courier</title>
-</head>
-
-<body style="text-align:center; font-family:Arial;">
-
-<h2>Book Your Courier</h2>
-
-<form onsubmit="sendWhatsApp(event)">
-
-<input type="text" id="name" placeholder="Sender Name" required><br><br>
-
-<input type="text" id="receiver" placeholder="Receiver Name" required><br><br>
-
-<input type="text" id="pickup" placeholder="Pickup Address" required><br><br>
-
-<input type="text" id="delivery" placeholder="Delivery Address" required><br><br>
-
-<input type="text" id="phone" placeholder="Mobile Number" required><br><br>
-
-<textarea id="details" placeholder="Parcel Details"></textarea><br><br>
-
-<button type="submit">Submit Booking</button>
-
-</form onsubmit="sendwhatsapp (event)">
-
-<script>
 function sendWhatsApp(e){
-    e.preventDefault();
+  e.preventDefault();
 
-    var name = document.getElementById("name").value;
-    var receiver = document.getElementById("receiver").value;
-    var pickup = document.getElementById("pickup").value;
-    var delivery = document.getElementById("delivery").value;
-    var phone = document.getElementById("phone").value;
-    var details = document.getElementById("details").value;
+  var name = document.getElementById("name").value;
+  var receiver = document.getElementById("receiver").value;
+  var pickup = document.getElementById("pickup").value;
+  var delivery = document.getElementById("delivery").value;
+  var phone = document.getElementById("phone").value;
 
-    var msg = "📦 New Booking:%0A"
-        + "Sender: " + name + "%0A"
-        + "Receiver: " + receiver + "%0A"
-        + "Pickup: " + pickup + "%0A"
-        + "Delivery: " + delivery + "%0A"
-        + "Mobile: " + phone + "%0A"
-        + "Details: " + details;
+  var msg = "📦 New Booking:%0A"
+          + "Sender: " + name + "%0A"
+          + "Receiver: " + receiver + "%0A"
+          + "Pickup: " + pickup + "%0A"
+          + "Delivery: " + delivery + "%0A"
+          + "Mobile: " + phone;
 
-    var url = "https://wa.me/917006317188?text=" + msg;
-    fetch "https://script.google.com/macros/s/AKfycbxwGhG1Vm8W145kyQRkym37uXoWWR_qB8TCoJmPwP6JeHTTKgGRWnfvIpqFtQjI_AS5hA/exec, {
-  method: "POST",
-  body: JSON.stringify({
-    name: name,
-    receiver: receiver,
-    pickup: pickup,
-    phone: phone
-  })
-});
-    window.open(url, "_blank");
+  var url = "https://wa.me/917006317188?text=" + msg;
+
+  // 🔥 IMPORTANT FIX (image method use karenge)
+  var img = new Image();
+  img.src = "https://script.google.com/macros/s/AKfycbxgQcqm4zv1DehbNboF5I3kIXToMLV_S_bQVyduw78hPETKj8fLVnafE8V09vnpNKU8ug/exec"
+          + "?name=" + name
+          + "&receiver=" + receiver
+          + "&pickup=" + pickup
+          + "&phone=" + phone;
+
+  // WhatsApp open
+  window.open(url, "_blank");
 }
-</script>
-
-</body>
-</html>
-<script>
-function sendWhatsApp(e){
-    e.preventDefault();
-
-    var name = document.getElementById("name").value;
-    var receiver = document.getElementById("receiver").value;
-    var pickup = document.getElementById("pickup").value;
-    var phone = document.getElementById("phone").value;
-
-    var msg = "📦 New Booking:%0A"
-        + "Sender: " + name + "%0A"
-        + "Receiver: " + receiver + "%0A"
-        + "Pickup: " + pickup + "%0A"
-        + "Mobile: " + phone;
-
-    var url = "https://wa.me/917006317188?text=" + msg;
-
-    window.open(url, "_blank");
-}
-</script>
